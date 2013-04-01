@@ -1,0 +1,48 @@
+<h1>Modifying <%= @user.first_name %>'s profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.file_field :photo %>
+  </p>
+
+  <p class="button"><%= f.submit %></p>
+
+  <%= link_to 'Cancel', users_path %>
+<% end %>
