@@ -1,0 +1,22 @@
+<h1>Listing of all registered Users</h1>
+
+<table>
+  <% @users.each do |user| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td>
+        <% image_tag user.photo.url(:thumb) %>
+      </td>
+      <td class="list_info">
+        <%= user.first_name %>
+        ,
+        <%= user.last_name %>
+      </td>
+      <td class="list_info">
+        <%= user.email %>
+      </td>
+      <td class="list_info">
+        <%= link_to 'Profile', user %>
+      </td>
+    </tr>
+  <% end %>
+</table>
