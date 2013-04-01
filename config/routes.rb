@@ -1,5 +1,6 @@
 DynamicTicketingSystem::Application.routes.draw do
 
+  get "log_out" => "sessions#exit", :as => "log_out"
   get "profile" => "sessions#view", :as => "profile"
   get "log_in" => "sessions#new", :as => "log_in"
 

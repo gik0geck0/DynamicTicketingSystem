@@ -24,12 +24,16 @@ class SessionsController < ApplicationController
 
   def view
     # Profile screen. We also don't want to show all sessions ;-)
-    puts "Looking up current user with user_id = #{session[:user_id]}"
-    if not defined? session[:user_id]
+    #puts "Looking up current user with user_id = #{session[:user_id]}"
+    if session[:user_id] == nil
       redirect_to root_url, :notice => "Please Log in"
     else
       @user = User.get_current_user session[:user_id]
-      puts "Current_user is #{@user}"
     end
+  end
+
+  def exit
+    reset_session
+    redirect_to root_url
   end
 end
