@@ -1,6 +1,6 @@
 <h1>Account Creation</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html =>  { :multipart => true } do |f| %>
   <% if @user.errors.any?  %>
     <div class="error_messages">
       <h2>Invalid Form</h2>
@@ -35,6 +35,10 @@
   <p>
     <%= f.label :password_confirmation %><br/>
     <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.file_field :photo %>
   </p>
 
   <p class="button"><%= f.submit %></p>

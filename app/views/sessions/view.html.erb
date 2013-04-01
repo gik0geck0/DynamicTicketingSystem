@@ -1,6 +1,10 @@
 <h1>Profile for <%= @user.first_name %></h1>
 
 <p>
+  <%= image_tag @user.photo.url(:small) %>
+</p>
+
+<p>
   Username/Email: 
   <%= @user.email %>
 </p>

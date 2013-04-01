@@ -1,12 +1,18 @@
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
-  attr_accessible :password, :password_confirmation, :email, :first_name, :last_name
+  attr_accessible :password, :password_confirmation, :email, :first_name, :last_name, :photo
   before_save :encrypt_password
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+
+  has_attached_file :photo,
+    :styles => {
+      :thumb => "100x100#",
+      :small => "150x150>"
+    }
 
   def self.authenticate(email, password)
     puts "Authenticating: ", email, "; ", password
