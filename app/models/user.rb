@@ -31,4 +31,12 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(@password, self.password_salt)
     end
   end
+
+  def self.get_current_user(user_id)
+    if defined? user_id
+      return find_by_id(user_id)
+    else
+      return nil
+    end
+  end
 end
