@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       #redirect_to root_url, :notice => "Logged in"
-      redirect_to root_url + "profile"
+      redirect_to root_url + "users/#{session[:user_id]}"
     else
       flash.now.alert = "Invalid login"
 
@@ -19,16 +19,6 @@ class SessionsController < ApplicationController
       params[:password] = nil
       params[:password_confirmation] = nil
       render "new"
-    end
-  end
-
-  def view
-    # Profile screen. We also don't want to show all sessions ;-)
-    #puts "Looking up current user with user_id = #{session[:user_id]}"
-    if session[:user_id] == nil
-      redirect_to root_url, :notice => "Please Log in"
-    else
-      @user = User.get_current_user session[:user_id]
     end
   end
 
