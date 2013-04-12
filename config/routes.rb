@@ -1,5 +1,11 @@
 DynamicTicketingSystem::Application.routes.draw do
 
+  get "tickets/new" => "tickets#new"
+
+  #get "tickets#show"
+
+  #get "tickets#update"
+
   get "log_out" => "sessions#exit", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
 
@@ -8,4 +14,5 @@ DynamicTicketingSystem::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :tickets
 end

@@ -1,0 +1,23 @@
+<h1>Create a new Ticket</h1>
+
+<%= form_for @ticket do |f| %>
+  <div class=field>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %><br/>
+  </div>
+
+  <div class=field>
+    <%= f.label :owner %><br/>
+    <%= f.text_field :user %><br/>
+  </div>
+
+  <div class=field>
+    <%= f.label :status_id %><br/>
+    <%= f.text_field :status_id %><br/>
+  </div>
+
+  <div class=field>
+    <%= f.label :description %><br/>
+    <%= f.text_field :description %><br/>
+  </div>
+<% end %>
