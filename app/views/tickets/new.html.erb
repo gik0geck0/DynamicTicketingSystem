@@ -7,17 +7,21 @@
   </div>
 
   <div class=field>
-    <%= f.label :owner %><br/>
-    <%= f.text_field :user %><br/>
+    <%= f.label 'Owner' %><br/>
+    <%= f.select :user_id, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
   </div>
 
   <div class=field>
-    <%= f.label :status_id %><br/>
-    <%= f.text_field :status_id %><br/>
+    <%= f.label :status %><br/>
+    <%= f.select :status_id, options_for_select(Statuses.all.map { |x| [x.name, x.id] } ) %>
   </div>
 
   <div class=field>
     <%= f.label :description %><br/>
     <%= f.text_field :description %><br/>
+  </div>
+
+  <div class=field>
+    <%= f.submit "Create!" %>
   </div>
 <% end %>

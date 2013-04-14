@@ -1,5 +1,7 @@
 class Ticket < ActiveRecord::Base
   has_one :user
   has_one :status
-  attr_accessible :description, :name, :status_id
+
+  validates_presence_of :status_id, :name, :user_id
+  attr_accessible :description, :name, :status_id, :user_id
 end

@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Statuses that would represent a typical development work flow
+Statuses.create([
+                { :name => 'Assigned' },
+                { :name => 'In Development' },
+                { :name => 'Development Completed' },
+                { :name => 'In Testing' },
+                { :name => 'Testing Completed' },
+                { :name => 'Closed' }
+])
