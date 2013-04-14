@@ -1,5 +1,10 @@
 class TicketsController < ApplicationController
   def new
+    if not session[:user_id]
+      redirect_to root_url + "log_in", notice: 'Please login'
+      return
+    end
+
     @ticket = Ticket.new
 
     respond_to do |format|
@@ -9,6 +14,11 @@ class TicketsController < ApplicationController
   end
 
   def create
+    if not session[:user_id]
+      redirect_to root_url + "log_in", notice: 'Please login'
+      return
+    end
+
     puts "Creating ticket #{params[:ticket]}"
     @ticket = Ticket.new(params[:ticket])
 
@@ -26,6 +36,10 @@ class TicketsController < ApplicationController
   end
 
   def show
+    if not session[:user_id]
+      redirect_to root_url + "log_in", notice: 'Please login'
+      return
+    end
     @ticket = Ticket.find_by_id(params[:id])
     puts "Showing ticket:", @ticket
     puts "All tickets:", Ticket.all
