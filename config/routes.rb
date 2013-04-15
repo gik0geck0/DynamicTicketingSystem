@@ -4,8 +4,6 @@ DynamicTicketingSystem::Application.routes.draw do
 
   #get "tickets#show"
 
-  #get "tickets#update"
-
   get "log_out" => "sessions#exit", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
 

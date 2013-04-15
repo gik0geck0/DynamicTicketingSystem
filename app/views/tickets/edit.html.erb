@@ -1,0 +1,98 @@
+<h1>Add Update to Ticket #<%= @ticket.id %></h1>
+
+<!-- Ticket's information/current state (unchangable) -->
+<table>
+  <tr>
+    <td>
+      Ticket ID
+    </td>
+    <td>
+      <%= @ticket.id %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Name
+    </td>
+    <td>
+      <%= @ticket.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Status
+    </td>
+    <td>
+      <%= @ticket.status.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Description
+    </td>
+    <td>
+      <%= @ticket.description %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Update history
+    </th>
+  </tr>
+</table>
+
+<!-- Updatable information -->
+
+<table>
+  <%= form_for(@ticket_updates) do |f| %>
+    <% if @ticket.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <tr>
+      <td>
+        <%= f.label 'Owner' %><br/>
+      </td>
+      <td>
+        <%= f.select :uid, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.label :status %><br/>
+      </td>
+      <td>
+        <%= f.select :sid, options_for_select(Status.all.map { |x| [x.name, x.id] } ) %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.label :description %>
+      </td>
+      <td>
+        <%= f.text_field :description %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.label :time_logged %>
+      </td>
+      <td>
+        <%= f.text_field :time_logged %>
+      </td>
+    </tr>
+
+    <tr class="button"><%= f.submit "Update!" %></tr>
+  <% end %>
+</table>

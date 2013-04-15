@@ -67,7 +67,22 @@ class TicketsController < ApplicationController
     @tickets = Ticket.find_all_by_user_id(session[:user_id])
   end
 
+  def edit
+    puts "params are: ", params
+    @ticket = Ticket.find(params[:id])
+  end
+
   def update
-    # TODO: Add updates to ticket. Also needs model for updates/notes/etc
+    @ticket = Ticket.find(params[:id])
+
+    respond_to do |format|
+      if @ticket.update_attributes(params[:user])
+        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
+    end
   end
 end
