@@ -16,12 +16,7 @@
     </td>
   </tr>
   <% @tickets.each do |ticket| %>
-    <% 
-       hash = {}
-       ticket.instance_variables.each {|var| hash[var.to_s.delete("@")] = ticket.instance_variable_get(var) }
-       puts hash  
-  %>
-    <tr>
+    <tr onclick="document.location = '<%= root_url + "tickets/#{ticket.id}" %>'">
       <td>
         <%= ticket.id %>
       </td>
