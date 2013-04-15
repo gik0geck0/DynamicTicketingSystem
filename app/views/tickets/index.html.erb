@@ -1,0 +1,39 @@
+<h1>My Tickets</h1>
+
+<table>
+  <tr>
+    <td>
+      Ticket ID
+    </td>
+    <td>
+      Name
+    </td>
+    <td>
+      Status
+    </td>
+    <td>
+      Description
+    </td>
+  </tr>
+  <% @tickets.each do |ticket| %>
+    <% 
+       hash = {}
+       ticket.instance_variables.each {|var| hash[var.to_s.delete("@")] = ticket.instance_variable_get(var) }
+       puts hash  
+  %>
+    <tr>
+      <td>
+        <%= ticket.id %>
+      </td>
+      <td>
+        <%= ticket.name %>
+      </td>
+      <td>
+        <%= ticket.status.name %>
+      </td>
+      <td>
+        <%= ticket.description %>
+      </td>
+    </tr>
+  <% end %>
+</table>

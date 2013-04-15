@@ -8,12 +8,12 @@
 
   <div class=field>
     <%= f.label 'Owner' %><br/>
-    <%= f.select :user_id, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
+    <%= f.select :uid, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
   </div>
 
   <div class=field>
     <%= f.label :status %><br/>
-    <%= f.select :status_id, options_for_select(Statuses.all.map { |x| [x.name, x.id] } ) %>
+    <%= f.select :sid, options_for_select(Status.all.map { |x| [x.name, x.id] } ) %>
   </div>
 
   <div class=field>

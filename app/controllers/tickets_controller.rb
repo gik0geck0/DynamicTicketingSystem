@@ -7,10 +7,10 @@ class TicketsController < ApplicationController
 
     @ticket = Ticket.new
 
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    #respond_to do |format|
+    #  format.html
+    #  format.json
+    #end
   end
 
   def create
@@ -18,6 +18,14 @@ class TicketsController < ApplicationController
       redirect_to root_url + "log_in", notice: 'Please login'
       return
     end
+
+    usr_id = params[:ticket][:uid].to_i
+    sts_id = params[:ticket][:sid].to_i
+    usr = User.find_by_id usr_id
+    sts = Status.find_by_id sts_id
+    puts "UID: #{usr_id} Usr: #{usr} SID: #{sts_id} Status: #{sts}"
+    params[:ticket][:user] = User.find_by_id params[:ticket][:uid].to_i
+    params[:ticket][:status] = Status.find_by_id params[:ticket][:sid].to_i
 
     puts "Creating ticket #{params[:ticket]}"
     @ticket = Ticket.new(params[:ticket])
@@ -48,6 +56,15 @@ class TicketsController < ApplicationController
       format.html
       format.json { render json: @ticket }
     end
+  end
+
+  def index
+    if not session[:user_id]
+      redirect_to root_url + "log_in", notice: 'Please login'
+      return
+    end
+    
+    @tickets = Ticket.find_all_by_user_id(session[:user_id])
   end
 
   def update
