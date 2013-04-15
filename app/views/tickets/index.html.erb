@@ -16,7 +16,7 @@
     </td>
   </tr>
   <% @tickets.each do |ticket| %>
-    <tr onclick="document.location = '<%= root_url + "tickets/#{ticket.id}" %>'">
+    <tr class="clickable" onclick="document.location = '<%= root_url + "tickets/#{ticket.id}" %>'">
       <td>
         <%= ticket.id %>
       </td>

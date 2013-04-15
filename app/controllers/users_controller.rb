@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def index
+    if session[:user_id] == nil
+      redirect_to root_url, :notice => "Please Log In"
+      return
+    end
     @users = User.all
 
     respond_to do |format|
