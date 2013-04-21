@@ -27,11 +27,10 @@ class TicketsController < ApplicationController
     params[:ticket][:user] = User.find_by_id params[:ticket][:uid].to_i
     params[:ticket][:status] = Status.find_by_id params[:ticket][:sid].to_i
 
-    puts "Creating ticket #{params[:ticket]}"
-    @ticket = Ticket.new(params[:ticket])
 
     respond_to do |format|
-      if @ticket.save
+      puts "Creating ticket #{params[:ticket]}"
+      if Ticket.create(params[:ticket])
         puts "Ticket successfully created"
         format.html { redirect_to @ticket, notice: 'Ticket Successfully Created' }
         format.json { render json: @ticket, status: :created, location: @ticket }
