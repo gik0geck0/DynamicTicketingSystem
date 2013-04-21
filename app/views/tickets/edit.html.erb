@@ -44,7 +44,7 @@
 <!-- Updatable information -->
 
 <table>
-  <%= form_for(@ticket_updates) do |f| %>
+  <%= form_for @ticket_updates do |f| %>
     <% if @ticket.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this user from being saved:</h2>
