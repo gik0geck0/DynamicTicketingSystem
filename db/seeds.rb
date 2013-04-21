@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Statuses that would represent a typical development work flow
-Statuses.create([
+Status.create([
                 { :name => 'Assigned' },
                 { :name => 'In Development' },
                 { :name => 'Development Completed' },
