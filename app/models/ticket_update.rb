@@ -1,9 +1,9 @@
 class Ticket < ActiveRecord::Base
   # I feel like has_one should make more sense here.
-  belongs_to :ticket
-  has_one :status
-  has_one :user, as: :owner
-  has_one :user, as: :updater
+  #belongs_to :ticket
+  #has_one :status
+  #has_one :user, as: :owner
+  #has_one :user, as: :updater
 
   validates_presence_of :updater, :ticket, :revision, :description
 
