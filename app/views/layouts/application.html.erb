@@ -8,11 +8,29 @@
 </head>
 <body>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
+  <h1 id="banner" class="boxed">
+    <%= @app_name || "Dynamic Ticketing System" %>
+  </h1>
 
-<%= yield %>
+  <div id="messages">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+  </div>
+
+  <div id="columns">
+    <div id="left" class="boxed">
+      
+    </div>
+    <div id="main" class="boxed">
+      <%= yield %>
+    </div>
+    <div id="right" class="boxed">
+
+    </div>
+  </div>
+
+
 
 </body>
 </html>
