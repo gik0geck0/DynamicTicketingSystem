@@ -1,4 +1,4 @@
-class Ticket < ActiveRecord::Base
+class TicketUpdate < ActiveRecord::Base
   # I feel like has_one should make more sense here.
   #belongs_to :ticket
   #has_one :status
