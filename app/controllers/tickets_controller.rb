@@ -19,14 +19,9 @@ class TicketsController < ApplicationController
       return
     end
 
-    usr_id = params[:ticket][:uid].to_i
-    sts_id = params[:ticket][:sid].to_i
-    usr = User.find_by_id usr_id
-    sts = Status.find_by_id sts_id
-    puts "UID: #{usr_id} Usr: #{usr} SID: #{sts_id} Status: #{sts}"
     params[:ticket][:user] = User.find_by_id params[:ticket][:uid].to_i
     params[:ticket][:status] = Status.find_by_id params[:ticket][:sid].to_i
-
+    puts "Usr: #{params[:ticket][:user]} ; Status: #{params[:ticket][:status]}"
 
     respond_to do |format|
       puts "Creating ticket #{params[:ticket]}"
