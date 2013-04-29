@@ -1,0 +1,22 @@
+<h1>TicketUpdate#new</h1>
+<p>Find me in app/views/ticket_update/new.html.erb</p>
+<h1>Create a new Ticket</h1>
+
+<!--  -->
+  <%= form_for [@ticket, @ticket_update], :url => ticket_ticket_update_path(@ticket) do |f| %>
+  <%= f.select :uid, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
+
+  <div class=field>
+    <%= f.label :status %><br/>
+    <%= f.select :sid, options_for_select(Status.all.map { |x| [x.name, x.id] } ) %>
+  </div>
+
+  <div class=field>
+    <%= f.label :description %><br/>
+    <%= f.text_field :description %><br/>
+  </div>
+
+  <div class=field>
+    <%= f.submit "Create!" %>
+  </div>
+<% end %>

@@ -1,9 +1,8 @@
 <h1>TicketUpdate#new</h1>
 <p>Find me in app/views/ticket_update/new.html.erb</p>
 <h1>Create a new Ticket</h1>
-  attr_accessible :updater, :ticket, :revision, :description, :time_logged
 
-
+<!--  -->
   <%= form_for [@ticket, @ticket_update], :url => ticket_ticket_update_path(@ticket) do |f| %>
   <%= f.select :uid, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
 

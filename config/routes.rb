@@ -20,7 +20,7 @@ DynamicTicketingSystem::Application.routes.draw do
   #end
 
   resources :tickets do
-    resources :ticket_updates, :controller => 'ticket/ticket_update'
+    #resources :ticket_updates, :controller => 'tickets/ticket_update'
   end
-  get 'tickets/:ticket_id/update' => 'ticket/ticket_update#new'
+  get 'tickets/:ticket_id/update' => 'tickets/ticket_update#new', :action => 'new'
 end
