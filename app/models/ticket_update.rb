@@ -1,9 +1,10 @@
 class TicketUpdate < ActiveRecord::Base
   # I feel like has_one should make more sense here.
   belongs_to :ticket
-  has_one :status
-  has_one :user, :as => :owner
-  has_one :user, :as => :updater
+  belongs_to :status
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"
+  belongs_to :updater, :class_name => "User", :foreign_key => "updater_id"
+  #belongs_to :updater
 
   # Things that are definitely required
   validates_presence_of :updater, :ticket, :revision, :description, :time_logged

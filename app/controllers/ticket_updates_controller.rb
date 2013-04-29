@@ -28,6 +28,8 @@ class TicketUpdatesController < ApplicationController
         format.json { render json: @ticket_update.errors, status: :unprocessable_entity }
       end
     end
+
+    redirect_to ticket_path(@ticket)
   end
 
   def new
