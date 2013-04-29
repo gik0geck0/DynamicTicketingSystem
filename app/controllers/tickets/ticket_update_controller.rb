@@ -27,6 +27,7 @@ class Tickets::TicketUpdateController < ApplicationController
       return
     end
 
+    #@ticket = Ticket.find(params[:ticket_id])
     @ticket_update = TicketUpdate.new
   end
 end

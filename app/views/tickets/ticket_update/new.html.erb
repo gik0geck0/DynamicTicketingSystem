@@ -3,7 +3,7 @@
 <h1>Create a new Ticket</h1>
 
 <!--  -->
-  <%= form_for [@ticket, @ticket_update], :url => ticket_ticket_update_path(@ticket) do |f| %>
+  <%= form_for [@ticket, @ticket_update], :url => ticket_ticket_updates_path(@ticket) do |f| %>
   <%= f.select :uid, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
 
   <div class=field>
