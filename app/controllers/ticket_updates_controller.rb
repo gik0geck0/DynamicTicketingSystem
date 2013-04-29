@@ -17,11 +17,12 @@ class TicketUpdatesController < ApplicationController
     end
 
     respond_to do |format|
-      puts "Creating ticket #{params[:ticket_update]}"
-      if TicketUpdate.create(params[:ticket_update])
+      @ticket_update = TicketUpdate.create(params[:ticket_update])
+      if @ticket_update
         puts "Ticket Update successfully created"
-        format.html { redirect_to @ticket_update, notice: 'Ticket Successfully Created' }
+        format.html { redirect_to Ticket.find(params[:ticket_id]), notice: 'Update successfully added to ticket' }
         format.json { render json: @ticket_update, status: :created, location: @ticket_update }
+        
       else
         puts "Ticket Update creation failed", @ticket_update.errors.map { |attr, msg| msg }
         format.html { render action: "new" }
@@ -29,7 +30,7 @@ class TicketUpdatesController < ApplicationController
       end
     end
 
-    redirect_to ticket_path(@ticket)
+    return
   end
 
   def new
