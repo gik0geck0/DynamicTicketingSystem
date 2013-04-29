@@ -5,6 +5,7 @@ class TicketUpdate < ActiveRecord::Base
   has_one :user, as: :owner
   has_one :user, as: :updater
 
+  # Things that are definitely required
   validates_presence_of :updater, :ticket, :revision, :description
 
   # Status and owner are optional, required only to show a change
@@ -12,5 +13,6 @@ class TicketUpdate < ActiveRecord::Base
   #
   # Revision needs to be auto-incremented, but localized per ticket (which would be tougher in the DB than in rails)
 
-  attr_accessible :ticket, :revision, :description, :time_logged
+  attr_accessor :oid, :sid, :ticket, :revision, :description, :time_logged, :updater, :owner
+  attr_accessible :ticket, :revision, :description, :time_logged, :updater, :owner
 end

@@ -1,0 +1,45 @@
+<h1>TicketUpdate#new</h1>
+<p>Find me in app/views/ticket_update/new.html.erb</p>
+
+<!--
+DB columns.
+"status_id" integer 
+"owner_id" integer    # implicit as session user
+"updater_id" integer  # choice of new owner
+"ticket_id" integer   # implicit from params
+"revision" integer    # for now, i'll just leave it empty
+"description" varchar(255)
+"time_logged" integer # time spent on ticket. Default is 0
+"created_at" datetime NOT NULL
+"updated_at" datetime NOT NULL);
+-->
+
+<%= form_for [@ticket, @ticket_update] do |f| %>
+  <div>
+    Add an update to ticket #<%= @ticket.id %>
+  </div>
+
+  <div class=field>
+    <%= f.label 'New Status' %><br/>
+    <%= f.select :sid, options_for_select(Status.all.map { |x| [x.name, x.id] } ) %>
+  </div>
+
+  <div class=field>
+    <%= f.label 'New Owner' %><br/>
+    <%= f.select :oid, options_for_select(User.all.map { |x| [x.email, x.id] } ) %>
+  </div>
+
+  <div class=field>
+    <%= f.label :description %><br/>
+    <%= f.text_field :description %><br/>
+  </div>
+
+  <div class=field>
+    <%= f.label :time_logged %>
+    <%= f.number_field :time_logged %>
+  </div>
+
+  <div class=field>
+    <%= f.submit "Update!" %>
+  </div>
+<% end %>
