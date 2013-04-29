@@ -1,5 +1,8 @@
 <h1>Ticket #<%= @ticket.id %></h1>
 
+<p>
+  <%= link_to 'Update', new_ticket_ticket_update_path(@ticket) %>
+</p>
 <table>
   <tr>
     <td>
@@ -34,4 +37,10 @@
     </td>
   </tr>
 </table>
-<%= link_to 'Update', new_ticket_ticket_update_path(@ticket) %>
+<table>
+  <% @ticket.ticket_updates.each do |tu| %>
+    <tr>
+      Ticket update
+    </tr>
+  <% end %>
+</table>

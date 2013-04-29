@@ -15,10 +15,11 @@ class TicketUpdatesController < ApplicationController
       params[:ticket_update][:status] = Status.find(params[:ticket_update][:sid])
       params[:ticket_update].delete(:sid)
     end
+    params[:ticket_update][:revision] = 0
 
     respond_to do |format|
-      @ticket_update = TicketUpdate.create(params[:ticket_update])
-      if @ticket_update
+      @ticket_update = TicketUpdate.new(params[:ticket_update])
+      if @ticket_update.save
         puts "Ticket Update successfully created"
         format.html { redirect_to Ticket.find(params[:ticket_id]), notice: 'Update successfully added to ticket' }
         format.json { render json: @ticket_update, status: :created, location: @ticket_update }

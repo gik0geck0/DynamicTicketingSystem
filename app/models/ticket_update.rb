@@ -4,6 +4,7 @@ class TicketUpdate < ActiveRecord::Base
   belongs_to :status
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"
   belongs_to :updater, :class_name => "User", :foreign_key => "updater_id"
+
   #belongs_to :updater
 
   # Things that are definitely required
