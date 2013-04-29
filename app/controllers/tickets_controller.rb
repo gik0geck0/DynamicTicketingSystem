@@ -58,7 +58,7 @@ class TicketsController < ApplicationController
       return
     end
     
-    @tickets = Ticket.find_all_by_user_id(session[:user_id])
+    @tickets = Ticket.all.select { |t| t.get_current_owner().id == session[:user_id] }
   end
 
   def edit

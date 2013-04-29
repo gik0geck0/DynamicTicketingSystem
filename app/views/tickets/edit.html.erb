@@ -23,7 +23,7 @@
       Status
     </td>
     <td>
-      <%= @ticket.status.name %>
+      <%= @ticket.get_current_status().name %>
     </td>
   </tr>
   <tr>

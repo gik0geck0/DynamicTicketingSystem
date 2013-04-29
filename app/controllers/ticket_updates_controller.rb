@@ -15,7 +15,8 @@ class TicketUpdatesController < ApplicationController
       params[:ticket_update][:status] = Status.find(params[:ticket_update][:sid])
       params[:ticket_update].delete(:sid)
     end
-    params[:ticket_update][:revision] = 0
+    params[:ticket_update][:time_logged] = params[:ticket_update][:time_logged].to_f + 0
+    params[:ticket_update][:revision] ||= 0
 
     respond_to do |format|
       @ticket_update = TicketUpdate.new(params[:ticket_update])
@@ -25,7 +26,8 @@ class TicketUpdatesController < ApplicationController
         format.json { render json: @ticket_update, status: :created, location: @ticket_update }
         
       else
-        puts "Ticket Update creation failed", @ticket_update.errors.map { |attr, msg| msg }
+        puts "Ticket Update creation failed", @ticket_update.errors.map { |attr, msg| "#{attr}: #{msg}" }
+        # TODO: This doesn't rediret correctly
         format.html { render action: "new" }
         format.json { render json: @ticket_update.errors, status: :unprocessable_entity }
       end
