@@ -37,10 +37,14 @@
     </td>
   </tr>
 </table>
-<table>
-  <% @ticket.ticket_updates.each do |tu| %>
-    <tr>
-      Ticket update
-    </tr>
-  <% end %>
-</table>
+
+<% @ticket.ticket_updates.each do |tu| %>
+  <div>
+    <h3>Revision #<%= tu.revision %></h3>
+    On <%= tu.created_at %>, <%= tu.updater.first_name + ", " + tu.updater.last_name %> spent <%= tu.time_logged %> hrs making the following change:
+  </div>
+
+  <p>
+    <%= tu.description %>
+  </p>
+<% end %>
