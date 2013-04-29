@@ -19,8 +19,6 @@
   <%= @user.last_name %>
 </p>
 
-<p class="button"><%= link_to "Logout", root_url + "log_out" %></p>
-
 <% if @user.id == session[:user_id] %>
   <p class="button"><%= link_to "Edit Profile", edit_user_path(@user) %></p>
   <p class="button"><%= link_to "My Tickets", tickets_path %></p>
