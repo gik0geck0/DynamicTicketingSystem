@@ -22,10 +22,18 @@
   </tr>
   <tr>
     <td>
+      Owner
+    </td>
+    <td>
+      <%= @ticket.get_current_owner.email %>
+    </td>
+  </tr>
+  <tr>
+    <td>
       Status
     </td>
     <td>
-      <%= @ticket.status.name %>
+      <%= @ticket.get_current_status.name %>
     </td>
   </tr>
   <tr>
