@@ -2,6 +2,7 @@ class Ticket < ActiveRecord::Base
   # I feel like has_one should make more sense here.
   belongs_to :user
   belongs_to :status
+  has_many :ticket_updates
 
   validates_presence_of :status, :name, :user
 
