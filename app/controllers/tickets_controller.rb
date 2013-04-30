@@ -7,10 +7,10 @@ class TicketsController < ApplicationController
 
     @ticket = Ticket.new
 
-    #respond_to do |format|
-    #  format.html
-    #  format.json
-    #end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
