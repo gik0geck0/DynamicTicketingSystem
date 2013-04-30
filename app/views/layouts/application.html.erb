@@ -12,11 +12,13 @@
     <%= @app_name || "Dynamic Ticketing System" %>
   </h1>
 
-  <div id="messages">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
-  </div>
+  <% if not flash.empty? %>
+    <div id="messages", class="boxed">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div id="columns">
     <div id="left" class="boxed">

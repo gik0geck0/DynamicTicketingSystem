@@ -41,7 +41,7 @@ body {
     margin-left: 1%;
     #background: #141;
     width: 10%;
-    height: 30em;
+    height: 40em;
 }
 
 #left * {
@@ -52,7 +52,7 @@ body {
     padding-left: 1%;
     padding-right: 1%;
     float: left;
-    height: 30em;
+    height: 40em;
     #margin-left: 11em;
     #margin-right: 11em;
     width: 72%;
@@ -66,5 +66,17 @@ body {
     margin-right: 1%;
     margin-left: 1%;
     width: 10%;
-    height: 30em;
+    height: 40em;
+}
+
+#messages {
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-top: 0.3em;
+    margin-bottom: 1em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-left: 1%;
+    width: 97%;
+    background-color: pink;
 }

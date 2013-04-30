@@ -9,6 +9,7 @@ class TicketUpdate < ActiveRecord::Base
 
   # Things that are definitely required
   validates_presence_of :updater, :ticket, :revision, :description, :time_logged
+  validates :time_logged, :numericality => { :only_integer => true, :less_than => 2147483647, :greater_than => -2147483648 }
 
   # Status and owner are optional, required only to show a change
   # time_logged would otherwise be 0, if there's 'no change'

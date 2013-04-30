@@ -15,7 +15,8 @@ class TicketUpdatesController < ApplicationController
       params[:ticket_update][:status] = Status.find(params[:ticket_update][:sid])
       params[:ticket_update].delete(:sid)
     end
-    params[:ticket_update][:time_logged] = params[:ticket_update][:time_logged].to_f + 0
+    params[:ticket_update][:description] ||= ''
+    params[:ticket_update][:time_logged] = params[:ticket_update][:time_logged].to_i + 0
     params[:ticket_update][:revision] ||= 0
 
     respond_to do |format|
@@ -27,8 +28,9 @@ class TicketUpdatesController < ApplicationController
         
       else
         puts "Ticket Update creation failed", @ticket_update.errors.map { |attr, msg| "#{attr}: #{msg}" }
-        # TODO: This doesn't rediret correctly
-        format.html { render action: "new" }
+        # Not sure why i REALLY have to set @ticket here. But it's to be used when re-rendering new
+        @ticket = Ticket.find(params[:ticket_id])
+        format.html { render :new }
         format.json { render json: @ticket_update.errors, status: :unprocessable_entity }
       end
     end
@@ -42,6 +44,7 @@ class TicketUpdatesController < ApplicationController
       return
     end
 
+    puts "Finding the ticket with the id #{params[:ticket_id]}"
     @ticket = Ticket.find(params[:ticket_id])
     @ticket_update = TicketUpdate.new
   end
