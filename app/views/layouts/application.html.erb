@@ -23,6 +23,8 @@
   <div id="columns">
     <div id="left" class="boxed">
       <% if session[:user_id] %>
+        <p class="button"><%= link_to "My Profile", user_url(session[:user_id]) %></p>
+        <p class="button"><%= link_to "My Tickets", tickets_url %></p>
         <p class="button"><%= link_to "Logout", root_url + "log_out" %></p>
       <% end %>
     </div>
