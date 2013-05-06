@@ -12,13 +12,21 @@
     <%= @app_name || "Dynamic Ticketing System" %>
   </h1>
 
-  <% if not flash.empty? %>
-    <div id="messages", class="boxed">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if not session[:user_id] %>
+      <div id="jokes", class="boxed">
+      <% joke = Joke.find(1) %>
+      <%= joke.body %>
+      </div>
+    <% end %>
+
+
+    <% if not flash.empty? %>
+      <div id="messages", class="boxed">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+    <% end %>
 
   <div id="columns">
     <div id="left" class="boxed">
